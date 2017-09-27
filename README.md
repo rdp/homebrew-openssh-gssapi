@@ -8,6 +8,7 @@ also overcomes this error message:
 /Users/<username>/.ssh/config: line 3: Bad configuration option: gssapitrustdns
 
 == Installation ===========
+
 To install this customized version of ssh (install homebrew then):
 
 $ brew install rdp/homebrew-openssh-gssapi/openssh --with-gssapi-support
@@ -25,6 +26,7 @@ https://sources.debian.net/patches/openssh/1:7.5p1-5/
 so I'm OK with it.
 
 Based loosely on the following:
+
 https://sources.debian.net/patches/openssh/1:7.5p1-5/
 https://github.com/macports/macports-ports/blob/master/net/openssh/Portfile
 https://github.com/Homebrew/homebrew-dupes/pull/583
