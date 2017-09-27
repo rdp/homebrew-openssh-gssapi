@@ -1,4 +1,4 @@
-# homebrew-openssh-gssapi
+# Homebrew-openssh-kerberos-friendly
 
 Homebrew tap that has an openssh option that supports GSSAPI et al
 
