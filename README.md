@@ -7,14 +7,15 @@ Meant to allow you to ssh into boxes from OS X using your kerberos/kinit tickets
 also overcomes this error message: 
 /Users/<username>/.ssh/config: line 3: Bad configuration option: gssapitrustdns
 
-to install this customized version of ssh (install homebrew then):
+== Installation ===========
+To install this customized version of ssh (install homebrew then):
 
 $ brew install rdp/homebrew-openssh-gssapi/openssh --with-gssapi-support
 
-Then you can create your kinit tickets and use them like normal 
+Then you can create your kinit tickets and use them like normal with ssh or scp.
 (the default "ssh" on the command line will become your new homebrew one, after installation,
-the original is also preserved if you want to revert back to it $ brew remove openssh).
-
+the original is also preserved if you want to revert back to it $ brew remove openssh
+you may need to restart your terminal to get the new ones, as well).
 
 The reason this is a "tap" (i.e. homebrew alternative formula) is that Homebrew "main" are reluctant to apply this patch since it isn't included in OS X main:
 https://github.com/Homebrew/homebrew-dupes/pull/583
