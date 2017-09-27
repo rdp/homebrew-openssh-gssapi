@@ -1,6 +1,6 @@
 # Homebrew-openssh-kerberos-friendly
 
-Homebrew tap that has an openssh option that supports GSSAPI et al
+Homebrew tap that has an openssh option that supports GSSAPIAuthentication/GSSAPIDelegateCredentials/GSSAPITrustDNS et al.
 
 Meant to allow you to ssh into boxes from OS X using your kerberos/kinit tickets, so you don't have to type your password in every time.
 
