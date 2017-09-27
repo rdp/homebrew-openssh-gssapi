@@ -20,3 +20,9 @@ https://sources.debian.net/patches/openssh/1:7.5p1-5/
 so I'm OK with it, providing it here.
 
 Patches/pull requests welcome (ex: to update to a newer openssh version, currently at 7.5p1, the latest as of at least sep 27 2017).
+
+
+Based loosely on the following:
+https://sources.debian.net/patches/openssh/1:7.5p1-5/
+https://github.com/macports/macports-ports/blob/master/net/openssh/Portfile
+https://github.com/Homebrew/homebrew-dupes/pull/583
