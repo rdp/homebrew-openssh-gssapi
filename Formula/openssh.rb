@@ -12,6 +12,7 @@ class Openssh < Formula
   #end
 
   option "with-gssapi-support", "Add GSSAPI key exchange support"
+  option "with-hpn", "Enable High Performance SSH (hpn-ssh) patch, helps large file transfer apparently"
   depends_on "openssl"
   conflicts_with 'openssh'
 
@@ -23,7 +24,6 @@ class Openssh < Formula
   end
 
   if build.with? "with-hpn"
-    # Patch enabling High Performance SSH (hpn-ssh) helps large file transfer apparently...
     patch do
       url 'https://downloads.sourceforge.net/project/hpnssh/HPN-SSH%2014v13%207.5p1/openssh-7_5_P1-hpn-KitchenSink-14.13.diff'
       sha256 "c88b480a1110879d75cdfe06cc704086a8bf7ddf63bc66be6a899f9a9814e4f2"
