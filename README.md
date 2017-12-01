@@ -34,4 +34,6 @@ https://github.com/macports/macports-ports/blob/master/net/openssh/Portfile
 https://github.com/Homebrew/homebrew-dupes/pull/583
 
 
-Patches/pull requests welcome (ex: to update to a newer openssh version, currently at 7.5p1, the latest as of at least sep 27 2017).  Want me to add the OS X keychain extension? Let me know!
+Patches/pull requests welcome (ex: to update to a newer openssh version, currently at 7.5p1, the latest as of at least sep 27 2017).  
+
+Want me to add the OS X keychain extension or HPN etc https://trac.macports.org/browser/trunk/dports/net/openssh ? Let me know!
