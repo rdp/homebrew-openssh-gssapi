@@ -23,7 +23,7 @@ class Openssh < Formula
     end
   end
 
-  if build.with? "with-hpn"
+  if build.with? "hpn"
     patch do
       url 'https://downloads.sourceforge.net/project/hpnssh/HPN-SSH%2014v13%207.5p1/openssh-7_5_P1-hpn-KitchenSink-14.13.diff'
       sha256 "c88b480a1110879d75cdfe06cc704086a8bf7ddf63bc66be6a899f9a9814e4f2"
