@@ -13,6 +13,7 @@ class Openssh < Formula
 
   option "with-gssapi-support", "Add GSSAPI key exchange support"
   depends_on "openssl"
+  conflicts_with 'openssh'
 
   if build.with? "gssapi-support"
     patch do
