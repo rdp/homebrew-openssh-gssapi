@@ -22,7 +22,7 @@ class Openssh < Formula
     end
   end
 
-  if build.with? "hpn"
+  if build.with? "with-hpn"
     # Patch enabling High Performance SSH (hpn-ssh) helps large file transfer apparently...
     patch do
       url 'https://downloads.sourceforge.net/project/hpnssh/HPN-SSH%2014v13%207.5p1/openssh-7_5_P1-hpn-KitchenSink-14.13.diff'
