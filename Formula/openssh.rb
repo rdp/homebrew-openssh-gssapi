@@ -22,7 +22,7 @@ class Openssh < Formula
 
   if build.with? "gssapi-support"
     patch do
-      url "https://sources.debian.net/data/main/o/openssh/1:7.5p1-5/debian/patches/gssapi.patch"
+      url "https://raw.githubusercontent.com/rdp/homebrew-openssh-gssapi/master/gssapi.patch" # "original" here: https://sources.debian.net/data/main/o/openssh/1:7.5p1-5/debian/patches/gssapi.patch but server slightly unstable :\
       sha256 'b7c0695cc5e45e14003e41a1b2a3cb92f70c574fe46d29a339e962335770da85'
     end
   end
