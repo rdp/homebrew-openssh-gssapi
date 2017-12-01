@@ -13,12 +13,14 @@ See also https://stackoverflow.com/a/46454141/32453
 
 To install this kerberos friendlier version of ssh (install homebrew then):
 
-$ brew install rdp/homebrew-openssh-gssapi/openssh --with-gssapi-support
+$ brew install rdp/homebrew-openssh-gssapi/openssh --with-gssapi-support --with-hpn
 
 Then you can create your kinit tickets and use them like normal with ssh or scp, etc.
 (the default "ssh" on the command line will become your new homebrew one, after installation,
 the original is also preserved if you want to revert back to it $ brew remove openssh
 you may need to restart your terminal to get the new ones, as well).
+
+hpn is some kind of "speed up openssh for large files" patch.
 
 The reason this is a "tap" (i.e. homebrew alternative formula) is that Homebrew "main" are reluctant to apply this patch since it isn't included in OS X main:
 https://github.com/Homebrew/homebrew-dupes/pull/583
