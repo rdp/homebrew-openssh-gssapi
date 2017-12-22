@@ -20,7 +20,7 @@ Then you can create your kinit tickets and use them like normal with ssh or scp,
 the original is also preserved if you want to revert back to it $ brew remove openssh
 you may need to restart your terminal to get the new ones, as well).
 
-hpn is some kind of "speed up openssh for large files" patch.
+--with-hpn is optionally, and is a patch to "speed up openssh for large file transfer"
 
 The reason this is a "tap" (i.e. homebrew alternative formula) is that Homebrew "main" are reluctant to apply this patch since it isn't included in OS X main:
 https://github.com/Homebrew/homebrew-dupes/pull/583
@@ -35,7 +35,6 @@ https://sources.debian.net/patches/openssh/1:7.5p1-5/
 https://github.com/macports/macports-ports/blob/master/net/openssh/Portfile
 https://github.com/Homebrew/homebrew-dupes/pull/583
 
+Patches/pull requests welcome (ex: to update to a newer openssh version, currently at 7.5p1, the latest as of at least sep 2017).  
 
-Patches/pull requests welcome (ex: to update to a newer openssh version, currently at 7.5p1, the latest as of at least sep 27 2017).  
-
-Want me to add the OS X keychain extension or HPN etc https://trac.macports.org/browser/trunk/dports/net/openssh ? Let me know!
+Want me to add other patches, ex: https://trac.macports.org/browser/trunk/dports/net/openssh ? Let me know in issues!
