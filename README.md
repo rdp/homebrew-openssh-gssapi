@@ -38,3 +38,19 @@ https://github.com/Homebrew/homebrew-dupes/pull/583
 Patches/pull requests welcome (ex: to update to a newer openssh version, currently at 7.5p1, the latest as of at least sep 2017).  
 
 Want me to add other patches, ex: https://trac.macports.org/browser/trunk/dports/net/openssh ? Let me know in issues!
+
+
+Hints:
+
+In your ~/.ssh/config you need/want this:
+
+GSSAPIAuthentication yes
+GSSAPIDelegateCredentials yes
+GSSAPITrustDNS yes
+
+And also you can use kinit on OS X like
+$ kinit --keychain
+or
+$ kinit --keychain bob@MY.REAL.COM
+
+to "save" your password: https://superuser.com/a/950769/39364
