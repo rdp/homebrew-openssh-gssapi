@@ -11,6 +11,9 @@ class OpensshGssapiHpn < Formula
     #sha256 "a7998e2c51b48845f74bfc925cb00b54778a0ccaa9d02ae40dbc98e4ba1f7963" => :high_sierra
   #end
 
+  # Please don't resubmit the keychain patch option. It will never be accepted.
+  # https://github.com/Homebrew/homebrew-dupes/pull/482#issuecomment-118994372
+
   option "with-gssapi-support", "Add GSSAPI key exchange support"
   option "with-hpn", "Enable High Performance SSH (hpn-ssh) patch, helps large file transfer apparently"
   depends_on "openssl"
@@ -30,7 +33,7 @@ class OpensshGssapiHpn < Formula
     end 
   end
 
-  # Both these patches are applied by Apple. (and probably others ~/.ssh/config enableKeyChain or what not?)
+  # Both these patches are applied by Apple.
   patch do
     url "https://raw.githubusercontent.com/Homebrew/patches/1860b0a74/openssh/patch-sandbox-darwin.c-apple-sandbox-named-external.diff"
     sha256 "d886b98f99fd27e3157b02b5b57f3fb49f43fd33806195970d4567f12be66e71"
