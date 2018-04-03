@@ -16,7 +16,11 @@ class OpensshGssapiHpn < Formula
 
   option "with-gssapi-support", "Add GSSAPI key exchange support"
   option "with-hpn", "Enable High Performance SSH (hpn-ssh) patch, helps large file transfer apparently"
+
   depends_on "openssl"
+  depends_on "ldns" => :optional
+  depends_on "pkg-config" => :build if build.with? "ldns"
+
   conflicts_with 'openssh'
 
   if build.with? "gssapi-support"
@@ -56,13 +60,20 @@ class OpensshGssapiHpn < Formula
     # We introduce this issue with patching, it's not an upstream bug.
     inreplace "sandbox-darwin.c", "@PREFIX@/share/openssh", etc/"ssh"
 
-    system "./configure", "--with-libedit",
-                          "--with-kerberos5",
-                          "--prefix=#{prefix}",
-                          "--sysconfdir=#{etc}/ssh",
-                          "--with-pam",
-                          "--with-ssl-dir=#{Formula["openssl"].opt_prefix}"
+    args = %W[
+      --with-libedit
+      --with-kerberos5
+      --prefix=#{prefix}
+      --sysconfdir=#{etc}/ssh
+      --with-pam
+      --with-ssl-dir=#{Formula["openssl"].opt_prefix}
+    ]
+
+    args << "--with-ldns" if build.with? "ldns"
+
+    system "./configure", *args
     system "make"
+    ENV.deparallelize
     system "make", "install"
 
     # This was removed by upstream with very little announcement and has
