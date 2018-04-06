@@ -97,7 +97,9 @@ class OpensshGssapiHpn < Formula
 
   def caveats
     if build.with? "keychain-support" then <<-EOS.undent
+        keychain-support:
         NOTE: replacing system daemons is unsupported. Proceed at your own risk.
+        See also some warnings here: https://github.com/rdp/homebrew-openssh-gssapi/issues/1
 
         For complete functionality, please modify:
           /System/Library/LaunchAgents/org.openbsd.ssh-agent.plist

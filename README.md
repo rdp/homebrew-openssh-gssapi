@@ -13,7 +13,7 @@ See also https://stackoverflow.com/a/46454141/32453
 
 To install this kerberos friendlier version of ssh (install homebrew then):
 
-$ brew install rdp/homebrew-openssh-gssapi/openssh-gssapi-hpn --with-gssapi-support --with-hpn
+$ brew install rdp/homebrew-openssh-gssapi/openssh-gssapi-hpn --with-gssapi-support --with-hpn # or --with-keychain-support [can't do with hpn]
 
 Then you can create your kinit tickets and use them like normal with ssh or scp, etc.
 (the default "ssh" on the command line will become your new homebrew one, after installation,
