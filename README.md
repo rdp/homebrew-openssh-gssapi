@@ -35,14 +35,13 @@ https://sources.debian.net/patches/openssh/1:7.5p1-5/
 https://github.com/macports/macports-ports/blob/master/net/openssh/Portfile
 https://github.com/Homebrew/homebrew-dupes/pull/583
 
-Patches/pull requests welcome (ex: to update to a newer openssh version, currently at 7.5p1, the latest as of at least sep 2017).  
+Patches/pull requests welcome (ex: to update to a newer openssh version)
 
 Want me to add other patches, ex: https://trac.macports.org/browser/trunk/dports/net/openssh ? Let me know in issues!
 
-
 Hints:
 
-In your ~/.ssh/config you need/want this:
+To use kerberos keys, in your ~/.ssh/config you need/want this:
 
 GSSAPIAuthentication yes
 GSSAPIDelegateCredentials yes
