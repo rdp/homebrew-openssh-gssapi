@@ -1,11 +1,11 @@
 # Homebrew-openssh-kerberos-friendly
 
-Homebrew tap that includes a formula for openssh with an option that supports GSSAPIAuthentication/GSSAPIDelegateCredentials/GSSAPITrustDNS et al.
+Homebrew tap for openssh with option to support GSSAPIAuthentication/GSSAPIDelegateCredentials/GSSAPITrustDNS et al.
 
-Meant to allow you to ssh into other boxes from OS X using your kerberos/kinit tickets, so you don't have to type your password in every time.
+These patches allow you to ssh into other boxes from OS X using your kerberos/kinit tickets, so you don't have to type your password in every time.
 
 also overcomes this error message: 
-/Users/<username>/.ssh/config: line 3: Bad configuration option: gssapitrustdns
+/Users/username/.ssh/config: line 3: Bad configuration option: gssapitrustdns
   
 See also https://stackoverflow.com/a/46454141/32453
 
@@ -13,7 +13,7 @@ See also https://stackoverflow.com/a/46454141/32453
 
 To install this kerberos friendlier version of ssh (install homebrew then):
 
-$ brew install rdp/homebrew-openssh-gssapi/openssh --with-gssapi-support --with-hpn
+$ brew install rdp/homebrew-openssh-gssapi/openssh-gssapi-hpn --with-gssapi-support --with-hpn
 
 Then you can create your kinit tickets and use them like normal with ssh or scp, etc.
 (the default "ssh" on the command line will become your new homebrew one, after installation,
