@@ -11,20 +11,20 @@ class OpensshGssapiHpn < Formula
 
   option "with-gssapi-support", "Add GSSAPI key exchange support"
   option "with-hpn", "Enable High Performance SSH (hpn-ssh) patch, helps large file transfer apparently"
-  option "with-keychain-support", "Add native OS X Keychain and Launch Daemon support to ssh-agent"
+  option "with-keychain-support", "Add native OS X Keychain and Launch Daemon support to ssh-agent" # doesn't work with HPN as of today FWIW...
 
-  depends_on "autoconf" => :build if build.with? "keychain-support"	
+  depends_on "autoconf" => :build if build.with? "keychain-support"
   depends_on "openssl"
   depends_on "ldns" => :optional
   depends_on "pkg-config" => :build if build.with? "ldns"
 
   conflicts_with 'openssh'
 
-  if build.with? "keychain-support"	
-    patch do	
-      url "https://trac.macports.org/export/135165/trunk/dports/net/openssh/files/0002-Apple-keychain-integration-other-changes.patch"	
-      sha256 "bcc9b9103fe2333ec6053fcdf5aac51ca2f07138cd05b66c37c01c92585ed778"	
-    end	
+  if build.with? "keychain-support"
+    patch do
+      url "https://raw.githubusercontent.com/macports/macports-ports/cd1cc0653a300ac6714501bdb64bdedabddb8d75/net/openssh/files/0002-Apple-keychain-integration-other-changes.patch"
+      sha256 "1c5e070ed53f77160dd2b658e0d3877cc01ee9cd44711e0ba76092a2a66b4e33"
+    end
   end
 
   if build.with? "gssapi-support"
@@ -38,7 +38,7 @@ class OpensshGssapiHpn < Formula
     patch do
       url 'https://downloads.sourceforge.net/project/hpnssh/HPN-SSH%2014v14%207.6p1/openssh-7_6_P1-hpn-KitchenSink-14.14.diff'
       sha256 "96b66d0ce26a8e6f9e925c4c991ccab4e9050f95a420e7f7e59f39c89fa17939"
-    end 
+    end
   end
 
   # Both these patches are applied by Apple.
@@ -58,10 +58,10 @@ class OpensshGssapiHpn < Formula
   end
 
   def install
-    system "autoreconf -i" if build.with? "keychain-support"	
-    if build.with? "keychain-support"	
-      ENV.append "CPPFLAGS", "-D__APPLE_LAUNCHD__ -D__APPLE_KEYCHAIN__"	
-      ENV.append "LDFLAGS", "-framework CoreFoundation -framework SecurityFoundation -framework Security"	
+    system "autoreconf -i" if build.with? "keychain-support"
+    if build.with? "keychain-support"
+      ENV.append "CPPFLAGS", "-D__APPLE_LAUNCHD__ -D__APPLE_KEYCHAIN__"
+      ENV.append "LDFLAGS", "-framework CoreFoundation -framework SecurityFoundation -framework Security"
     end
 
     ENV.append "CPPFLAGS", "-D__APPLE_SANDBOX_NAMED_EXTERNAL__"
@@ -93,6 +93,40 @@ class OpensshGssapiHpn < Formula
 
     buildpath.install resource("com.openssh.sshd.sb")
     (etc/"ssh").install "com.openssh.sshd.sb" => "org.openssh.sshd.sb"
+  end
+
+  def caveats
+    if build.with? "keychain-support" then <<-EOS.undent
+        NOTE: replacing system daemons is unsupported. Proceed at your own risk.
+
+        For complete functionality, please modify:
+          /System/Library/LaunchAgents/org.openbsd.ssh-agent.plist
+
+        and change ProgramArguments from
+          /usr/bin/ssh-agent
+        to
+          #{HOMEBREW_PREFIX}/bin/ssh-agent
+
+        You will need to restart or issue the following commands
+        for the changes to take effect:
+
+          launchctl unload /System/Library/LaunchAgents/org.openbsd.ssh-agent.plist
+          launchctl load /System/Library/LaunchAgents/org.openbsd.ssh-agent.plist
+
+        Finally, add  these lines somewhere to your ~/.bash_profile:
+          eval $(ssh-agent)
+
+          function cleanup {
+            echo "Killing SSH-Agent"
+            kill -9 $SSH_AGENT_PID
+          }
+
+          trap cleanup EXIT
+
+        After that, you can start storing private key passwords in
+        your OS X Keychain.
+      EOS
+    end
   end
 
   test do
