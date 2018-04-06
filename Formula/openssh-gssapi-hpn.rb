@@ -11,12 +11,21 @@ class OpensshGssapiHpn < Formula
 
   option "with-gssapi-support", "Add GSSAPI key exchange support"
   option "with-hpn", "Enable High Performance SSH (hpn-ssh) patch, helps large file transfer apparently"
+  option "with-keychain-support", "Add native OS X Keychain and Launch Daemon support to ssh-agent"
 
+  depends_on "autoconf" => :build if build.with? "keychain-support"	
   depends_on "openssl"
   depends_on "ldns" => :optional
   depends_on "pkg-config" => :build if build.with? "ldns"
 
   conflicts_with 'openssh'
+
+  if build.with? "keychain-support"	
+    patch do	
+      url "https://trac.macports.org/export/135165/trunk/dports/net/openssh/files/0002-Apple-keychain-integration-other-changes.patch"	
+      sha256 "bcc9b9103fe2333ec6053fcdf5aac51ca2f07138cd05b66c37c01c92585ed778"	
+    end	
+  end
 
   if build.with? "gssapi-support"
     patch do
@@ -49,6 +58,12 @@ class OpensshGssapiHpn < Formula
   end
 
   def install
+    system "autoreconf -i" if build.with? "keychain-support"	
+    if build.with? "keychain-support"	
+      ENV.append "CPPFLAGS", "-D__APPLE_LAUNCHD__ -D__APPLE_KEYCHAIN__"	
+      ENV.append "LDFLAGS", "-framework CoreFoundation -framework SecurityFoundation -framework Security"	
+    end
+
     ENV.append "CPPFLAGS", "-D__APPLE_SANDBOX_NAMED_EXTERNAL__"
 
     # Ensure sandbox profile prefix is correct.
