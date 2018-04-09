@@ -29,7 +29,7 @@ class OpensshGssapiHpn < Formula
 
   if build.with? "gssapi-support"
     patch do
-      url "https://sources.debian.org/data/main/o/openssh/1:7.6p1-5/debian/patches/gssapi.patch"
+      url "https://sources.debian.org/data/main/o/openssh/1:7.6p1-2/debian/patches/gssapi.patch"
       sha256 "3a76ae38ec12873659b0113d097e2a2922d7fd46a1000125da6a5163c4b49051"
     end
   end
