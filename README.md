@@ -13,33 +13,52 @@ See also https://stackoverflow.com/a/46454141/32453
 
 To install this kerberos friendlier version of ssh (install homebrew then):
 
-$ brew install rdp/homebrew-openssh-gssapi/openssh-gssapi-hpn --with-gssapi-support --with-hpn # or --with-keychain-support [can't do with hpn]
+$ brew install rdp/homebrew-openssh-gssapi/openssh-gssapi-hpn --with-gssapi-support
+
+To install a version that has the "HPN" performance improvements to "speed up openssh for large file transfer"
+
+$ brew install rdp/homebrew-openssh-gssapi/openssh-gssapi-hpn --with-hpn
+
+to install a version with "Added native OS X Keychain and Launch Daemon support to ssh-agent"
+
+$ brew install rdp/homebrew-openssh-gssapi/openssh-gssapi-hpn --with-keychain-support
+
+Or combine them:
+
+$ brew install rdp/homebrew-openssh-gssapi/openssh-gssapi-hpn --with-gssapi-support --with-hpn
+
+(note you can't do both --with-keychain-support simultaneous with --with-hpn those 2 conflict barely, PR's welcome!)
 
 Then you can create your kinit tickets and use them like normal with ssh or scp, etc.
 (the default "ssh" on the command line will become your new homebrew one, after installation,
 the original is also preserved if you want to revert back to it $ brew remove openssh
 you may need to restart your terminal to get the new ones, as well).
 
---with-hpn is optionally, and is a patch to "speed up openssh for large file transfer"
+The reason this is a "tap" (i.e. homebrew alternative formula) is that Homebrew "main" are reluctant to apply these patches 
+since they aren't included in OS X main or openssh main (even though some are supported in various other distros like Debian,
+and the keychain patch is supported by macports' version, they're just wary of unaccepted supports to security related infrastructure):
 
-The reason this is a "tap" (i.e. homebrew alternative formula) is that Homebrew "main" are reluctant to apply this patch since it isn't included in OS X main:
-https://github.com/Homebrew/homebrew-dupes/pull/583
+See https://github.com/Homebrew/homebrew-dupes/pull/583 for the conversation.
 
-however almost *every distro* includes it, and it has a "generally good security history"
+however almost *every distro* includes the gssapi patch, and it has a "generally good security history"
 https://sources.debian.net/patches/openssh/1:7.5p1-5/
 so I'm OK with it.
 
 Based loosely on the following:
 
-https://sources.debian.net/patches/openssh/1:7.5p1-5/
 https://github.com/macports/macports-ports/blob/master/net/openssh/Portfile
+https://sources.debian.net/patches/openssh/1:7.5p1-5/
 https://github.com/Homebrew/homebrew-dupes/pull/583
+https://github.com/seththeriault/homebrew-openssh-gssapi
+https://github.com/Homebrew/homebrew-core/blob/master/Formula/openssh.rb
+
+And various other contributions/contributors, thanks!
 
 Patches/pull requests welcome (ex: to update to a newer openssh version)
 
-Want me to add other patches, ex: https://trac.macports.org/browser/trunk/dports/net/openssh ? Let me know in issues!
+Want me to add other patches, ex: macports' https://trac.macports.org/browser/trunk/dports/net/openssh ? Let me know via issues!
 
-Hints:
+==== Hints:
 
 To use kerberos keys, in your ~/.ssh/config you need/want this:
 
