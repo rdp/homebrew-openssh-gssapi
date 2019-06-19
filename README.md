@@ -13,19 +13,23 @@ See also https://stackoverflow.com/a/46454141/32453
 
 To install this kerberos friendlier version of ssh (install homebrew then):
 
-$ brew install rdp/homebrew-openssh-gssapi/openssh-gssapi-hpn --with-gssapi-support
+$ brew tap rdp/openssh-gssapi
+
+Now one of these:
+
+$ brew install rdp/homebrew-openssh-gssapi/openssh-patched --with-gssapi-support
 
 To install a version that has the "HPN" performance improvements to "speed up openssh for large file transfer"
 
-$ brew install rdp/homebrew-openssh-gssapi/openssh-gssapi-hpn --with-hpn
+$ brew install rdp/homebrew-openssh-gssapi/openssh-patched --with-hpn
 
 to install a version with "Added native OS X Keychain and Launch Daemon support to ssh-agent"
 
-$ brew install rdp/homebrew-openssh-gssapi/openssh-gssapi-hpn --with-keychain-support
+$ brew install rdp/homebrew-openssh-gssapi/openssh-patched --with-keychain-support
 
 Or combine them:
 
-$ brew install rdp/homebrew-openssh-gssapi/openssh-gssapi-hpn --with-gssapi-support --with-hpn
+$ brew install rdp/homebrew-openssh-gssapi/openssh-patched --with-gssapi-support --with-hpn
 
 (note you can't do both --with-keychain-support simultaneous with --with-hpn those 2 conflict barely, PR's welcome!)
 
