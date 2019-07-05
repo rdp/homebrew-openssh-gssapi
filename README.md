@@ -1,4 +1,4 @@
-# Homebrew-openssh-kerberos-friendly
+# Homebrew-openssh-with-various-patches
 
 Homebrew tap for openssh with option to support GSSAPIAuthentication/GSSAPIDelegateCredentials/GSSAPITrustDNS et al.
 
