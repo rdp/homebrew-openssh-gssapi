@@ -65,14 +65,15 @@ Want me to add other patches, ex: macports' https://trac.macports.org/browser/tr
 ==== Hints:
 
 To use kerberos keys, in your ~/.ssh/config you need/want this:
-
+```
 GSSAPIAuthentication yes
 GSSAPIDelegateCredentials yes
 GSSAPITrustDNS yes
-
+```
 And also you can use kinit on OS X like
+```
 $ kinit --keychain
 or
 $ kinit --keychain bob@MY.REAL.COM
-
+```
 to "save" your password: https://superuser.com/a/950769/39364
