@@ -38,15 +38,15 @@ Then you can create your kinit tickets and use them like normal with ssh or scp,
 the original is also preserved if you want to revert back to it $ brew remove openssh
 you may need to restart your terminal to get the new ones, as well).
 
-The reason this is a "tap" (i.e. homebrew alternative formula) is that Homebrew "main" are reluctant to apply these patches 
-since they aren't included in OS X main or openssh main (even though some are supported in various other distros like Debian,
-and the keychain patch is supported by macports' version, they're just wary of unaccepted supports to security related infrastructure):
+The reason this is a "tap" (i.e. homebrew alternative formula) is that Homebrew "mainline" are reluctant to apply these patches 
+since they aren't included in OS X main (anymore) nor openssh main (even though some are supported in various other distros like Debian,
+and the keychain patch is supported by macports' version), they're just wary of unaccepted patches to security related infrastructure:
 
 See https://github.com/Homebrew/homebrew-dupes/pull/583 for the conversation.
 
 however almost *every distro* includes the gssapi patch, and it has a "generally good security history"
 https://sources.debian.net/patches/openssh/1:7.5p1-5/
-so I'm OK with it.
+so I'm OK with it, and created this tap to allow people to still access it.
 
 Based loosely on the following:
 
