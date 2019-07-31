@@ -11,11 +11,7 @@ See also https://stackoverflow.com/a/46454141/32453
 
 == Installation ===========
 
-To install this kerberos friendlier version of ssh (install homebrew then):
-
-$ brew tap rdp/openssh-gssapi
-
-Now one of these:
+To install this patched version of ssh (install homebrew then) run one of these:
 
 $ brew install rdp/homebrew-openssh-gssapi/openssh-patched --with-gssapi-support
 
@@ -64,7 +60,7 @@ Want me to add other patches, ex: macports' https://trac.macports.org/browser/tr
 
 ==== Hints:
 
-To use kerberos keys, in your ~/.ssh/config you need/want this:
+To use kerberos keys, once you have the new openssh installed, in your ~/.ssh/config file you need/want this:
 ```
 GSSAPIAuthentication yes
 GSSAPIDelegateCredentials yes
