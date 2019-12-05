@@ -36,7 +36,7 @@ class OpensshPatched < Formula
 
   if build.with? "gssapi-support"
     patch do
-      url "https://sources.debian.org/data/main/o/openssh/1:8.1p1-1/debian/patches/gssapi.patch" # TODO inline
+      url "https://raw.githubusercontent.com/rdp/homebrew-openssh-gssapi/master/gssapi.8.1p1.patch" # was "http://sources.debian.org/data/main/o/openssh/1:8.1p1-1/debian/patches/gssapi.patch" 
       sha256 "7875fe41ce090ba2bb3d76c396f9e6de863fbad34235bf97a4012d2f949909fb"
     end
   end
