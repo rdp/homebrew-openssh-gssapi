@@ -25,9 +25,9 @@ $ brew install rdp/homebrew-openssh-gssapi/openssh-patched --with-keychain-suppo
 
 Or combine them:
 
-$ brew install rdp/homebrew-openssh-gssapi/openssh-patched --with-gssapi-support --with-hpn
+$ brew install rdp/homebrew-openssh-gssapi/openssh-patched --with-gssapi-support --with-keychain-support
 
-(note you can't do both --with-keychain-support simultaneous with --with-hpn those 2 conflict barely, PR's welcome!)
+(note you can't do any other combination, they conflict, PR's or funding welcome!)
 
 Then you can create your kinit tickets and use them like normal with ssh or scp, etc.
 (the default "ssh" on the command line will become your new homebrew one, after installation,
