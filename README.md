@@ -11,7 +11,11 @@ See also https://stackoverflow.com/a/46454141/32453
 
 == Installation ===========
 
-To install this patched version of ssh (install homebrew then) run one of these:
+To install this patched version of ssh (install homebrew then), add the tap:
+
+$ brew tap rdp/homebrew-openssh-gssapi
+
+Then run one of these:
 
 $ brew install rdp/homebrew-openssh-gssapi/openssh-patched --with-gssapi-support
 
