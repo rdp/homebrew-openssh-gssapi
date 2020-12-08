@@ -1,9 +1,9 @@
 class OpensshPatched < Formula
   desc "OpenBSD freely-licensed SSH connectivity tools with some patches"
   homepage "https://www.openssh.com/"
-  url "https://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/openssh-8.1p1.tar.gz"
-  version "8.1p1"
-  sha256 "02f5dbef3835d0753556f973cd57b4c19b6b1f6cd24c03445e23ac77ca1b93ff"
+  url "https://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/openssh-8.4p1.tar.gz"
+  version "8.4p1"
+  sha256 "5a01d22e407eb1c05ba8a8f7c654d388a13e9f226e4ed33bd38748dafa1d2b24"
 
   # used to say: Please don't resubmit the keychain patch option. It will never be accepted.
   # now here it is...
@@ -14,6 +14,7 @@ class OpensshPatched < Formula
   option "with-keychain-support", "Add native OS X Keychain and Launch Daemon support to ssh-agent" # doesn't work with HPN as of today FWIW...
 
   depends_on "autoconf" => :build # if build.with? "keychain-support"
+  depends_on "automake" => :build
   depends_on "openssl"
   depends_on "ldns" => :optional
   depends_on "pkg-config" => :build if build.with? "ldns"
@@ -36,8 +37,8 @@ class OpensshPatched < Formula
 
   if build.with? "gssapi-support"
     patch do
-      url "https://raw.githubusercontent.com/rdp/homebrew-openssh-gssapi/master/gssapi.8.1p1.patch" # was "http://sources.debian.org/data/main/o/openssh/1:8.1p1-1/debian/patches/gssapi.patch" 
-      sha256 "7875fe41ce090ba2bb3d76c396f9e6de863fbad34235bf97a4012d2f949909fb"
+      url "https://raw.githubusercontent.com/johfre/homebrew-openssh-gssapi/master/gssapi.8.4p1.patch" # was "https://sources.debian.org/data/main/o/openssh/1:8.4p1-2/debian/patches/gssapi.patch"
+      sha256 "15139c42894dd0ebd182608ecd7151a9eef6158aed30c676e7685e8407c6d1cb"
     end
   end
 
