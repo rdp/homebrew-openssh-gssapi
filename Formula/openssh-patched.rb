@@ -11,7 +11,7 @@ class OpensshPatched < Formula
 
   option "with-gssapi-support", "Add GSSAPI key exchange support"
   option "with-hpn", "Enable High Performance SSH (hpn-ssh) patch, helps large file transfer apparently"
-  option "with-keychain-support", "Add native OS X Keychain and Launch Daemon support to ssh-agent" # doesn't work with HPN as of today FWIW...
+  option "with-keychain-support", "Add native OS X Keychain and Launch Daemon support to ssh-agent" # doesn't work together with HPN as of today FWIW...
 
   depends_on "autoconf" => :build # if build.with? "keychain-support"
   depends_on "openssl"
@@ -22,8 +22,8 @@ class OpensshPatched < Formula
 
   if build.with? "keychain-support"
     patch do
-      url "https://raw.githubusercontent.com/macports/macports-ports/439a81a91ea103342b41c8a4b091843615e540b2/net/openssh/files/0002-Apple-keychain-integration-other-changes.patch"
-      sha256 "a2c12902099ffdde7b9e2e6c8df497ef2fd5ed053c2dfcbcf95e060e8b680506"
+      url "https://gist.githubusercontent.com/leonklingele/01c01e6d9d143fa5b1df8e2354d808e4/raw/b509dedea2a6a4bab3dc75f7be2a7a1ac1cfb24e/0001-apple-keychain-integration-other-changes.patch"
+      sha256 "3cc0a5c8000cc0005c6b00b0c3c4acee38f0d2b0008eaf2193c9c8d1ae58bfdc"
     end
   end
 
