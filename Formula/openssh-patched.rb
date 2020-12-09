@@ -30,8 +30,8 @@ class OpensshPatched < Formula
 
   if build.with? "hpn"
     patch do
-      url 'https://sourceforge.net/projects/hpnssh/files/Patches/HPN-SSH%2014v20%208.1p1/openssh-8_1_P1-hpn-14.20.diff'
-      sha256 "e87f80296db8053676efda379865b505a12d643294d92bf2afc5ff806698e0eb"
+      url 'https://sourceforge.net/projects/hpnssh/files/Patches/HPN-SSH%2015v1%208.4p1/openssh-8_4_P1-hpn-KitchenSink-15.1.diff'
+      sha256 "addec311972075ea38f3978b7b98c893152937110a91bf8f00a95c369428c44b"
     end
   end
 
@@ -100,7 +100,7 @@ class OpensshPatched < Formula
 
   def caveats
     if build.with? "keychain-support" then <<-EOS
-        keychain-support:
+        keychain-support with ssh-agent keys:
         NOTE: replacing system daemons is unsupported. Proceed at your own risk.
         See also some warnings here: https://github.com/rdp/homebrew-openssh-gssapi/issues/1
 
