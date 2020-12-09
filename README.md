@@ -1,13 +1,15 @@
 # Homebrew-openssh-with-various-patches
 
-Homebrew tap for openssh with option to support GSSAPIAuthentication/GSSAPIDelegateCredentials/GSSAPITrustDNS et al.
+Homebrew tap for openssh to support GSSAPIAuthentication/GSSAPIDelegateCredentials/GSSAPITrustDNS et al. (and a few other things).
 
-These patches allow you to ssh into other boxes from OS X using your kerberos/kinit tickets, so you don't have to type your password in every time.
+These options allow you to ssh into other boxes from OS X using your kerberos/kinit tickets, so you don't have to type your password in every time.
 
 also overcomes this error message: 
 /Users/username/.ssh/config: line 3: Bad configuration option: gssapitrustdns
   
 See also https://stackoverflow.com/a/46454141/32453
+
+Read on for justification, but first, for those impatient:
 
 == Installation ===========
 
@@ -16,6 +18,8 @@ To install this patched version of ssh (install homebrew then), add the tap:
 $ brew tap rdp/homebrew-openssh-gssapi
 
 Then run one of these:
+
+Want kerberos support?
 
 $ brew install rdp/homebrew-openssh-gssapi/openssh-patched --with-gssapi-support
 
@@ -27,14 +31,14 @@ to install a version with "Added native OS X Keychain and Launch Daemon support 
 
 $ brew install rdp/homebrew-openssh-gssapi/openssh-patched --with-keychain-support
 
-Or combine them:
+Or combine them, my preferred option:
 
 $ brew install rdp/homebrew-openssh-gssapi/openssh-patched --with-gssapi-support --with-keychain-support
 
-(note you can't do any other combination, they conflict, PR's or funding welcome!)
+(note you can't do any other combination, they conflict currently, PR's or funding welcome!)
 
-Then you can create your kinit tickets and use them like normal with ssh or scp, etc.
-(the default "ssh" on the command line will become your new homebrew one, after installation,
+Now you can create your kinit tickets and use them like normal with ssh or scp, etc.
+(the default "ssh" on your command line will become your new homebrew one, after installation,
 the original is also preserved if you want to revert back to it $ brew remove openssh
 you may need to restart your terminal to get the new ones, as well).
 
@@ -46,7 +50,7 @@ See https://github.com/Homebrew/homebrew-dupes/pull/583 for the conversation.
 
 however almost *every distro* includes the gssapi patch, and it has a "generally good security history"
 https://sources.debian.net/patches/openssh/1:7.5p1-5/
-so I'm OK with it, and created this tap to allow people to still access it.
+so I'm OK with it, and created this tap to allow people to still access it, though upstream disdains it.
 
 Based loosely on the following:
 
@@ -58,19 +62,21 @@ https://github.com/Homebrew/homebrew-core/blob/master/Formula/openssh.rb
 
 And various other contributions/contributors, thanks!
 
-Patches/pull requests welcome (ex: to update to a newer openssh version)
+Patches/pull requests welcome (ex: update to a newer openssh version)
 
-Want me to add other patches, ex: macports' https://trac.macports.org/browser/trunk/dports/net/openssh ? Let me know via issues!
+Want me to add other patches, ex: macports' https://trac.macports.org/browser/trunk/dports/net/openssh various patches? Let me know via issues!
 
 ==== Hints:
+Now that you've got it installed, 
 
-To use kerberos keys, once you have the new openssh installed, in your ~/.ssh/config file you need/want this:
+to use kerberos keys, once you have the new openssh installed, in your ~/.ssh/config file you need/want this:
 ```
 GSSAPIAuthentication yes
 GSSAPIDelegateCredentials yes
 GSSAPITrustDNS yes
 ```
-And also you can use kinit on OS X like
+
+Also you can use kinit on OS X like
 ```
 $ kinit --keychain
 or
