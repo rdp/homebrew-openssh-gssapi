@@ -92,7 +92,7 @@ Also you can use kinit on OS X like
 ```
 $ kinit --keychain
 or
-$ kinit --keychain bob@MY.REAL.COM
+$ kinit --keychain bob@MY.REALM.COM
 ```
 to "save" your password: https://superuser.com/a/950769/39364
 
