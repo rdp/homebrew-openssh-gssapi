@@ -27,7 +27,8 @@ To install a version that has the "HPN" performance improvements to "speed up op
 
 $ brew install rdp/homebrew-openssh-gssapi/openssh-patched --with-hpn
 
-to install a version with "Added native OS X Keychain and Launch Daemon support to ssh-agent"
+to install a version with "Added native OS X Keychain and Launch Daemon support to ssh-agent" 
+    (i.e. get key pairs also from the KeyChain, not just from ssh-agent...I think. Optional.)
 
 $ brew install rdp/homebrew-openssh-gssapi/openssh-patched --with-keychain-support
 
