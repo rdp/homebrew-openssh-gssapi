@@ -95,3 +95,5 @@ or
 $ kinit --keychain bob@MY.REAL.COM
 ```
 to "save" your password: https://superuser.com/a/950769/39364
+
+To uninstall: brew remove openssh-patched
