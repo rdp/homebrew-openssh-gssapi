@@ -1,6 +1,14 @@
 # Homebrew-openssh-with-various-patches
 
-Homebrew tap for openssh to support GSSAPIAuthentication/GSSAPIDelegateCredentials/GSSAPITrustDNS et al. (and a few other things).
+Want to SSH into servers without having to type your password every time?  Either use a private/public keypair, or use Kerberos.
+Kerberos support by default installed in OS X' ssh.  Here's how to make it work, by installing a patched SSH:
+
+$ brew tap rdp/homebrew-openssh-gssapi
+$ brew install rdp/homebrew-openssh-gssapi/openssh-patched --with-gssapi-support
+
+== Background ===
+
+This is a homebrew tap for openssh to support GSSAPIAuthentication/GSSAPIDelegateCredentials/GSSAPITrustDNS et al. (and a few other things).
 
 These options allow you to ssh into other boxes from OS X using your kerberos/kinit tickets, so you don't have to type your password in every time.
 
