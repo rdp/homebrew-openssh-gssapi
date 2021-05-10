@@ -56,7 +56,7 @@ so I'm OK with it, and created this tap to allow people to still access it, thou
 
 Based loosely on the following:
 
-https://github.com/macports/macports-ports/blob/master/net/openssh/Portfile `sudo port install openssh +gsskex`
+https://github.com/macports/macports-ports/blob/master/net/openssh/Portfile though its kerberos goes on the PATH and doesn't support kinit --keychain which is painful...
 https://sources.debian.net/patches/openssh/1:7.5p1-5/
 https://archive.is/hSB6d#10%25
 https://github.com/seththeriault/homebrew-openssh-gssapi
