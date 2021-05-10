@@ -1,9 +1,10 @@
 # Homebrew-openssh-with-various-patches
 
 Want to SSH into servers without having to type your password every time?  Either use a private/public keypair, or use Kerberos.
-Kerberos support by default installed in OS X' ssh.  Here's how to make it work, by installing a patched SSH:
+Kerberos support by default isn't installed in OS X' ssh.  Here's how to make it work, by installing a local patched SSH using homebrew:
 
 $ brew tap rdp/homebrew-openssh-gssapi
+
 $ brew install rdp/homebrew-openssh-gssapi/openssh-patched --with-gssapi-support
 
 == Background ===
