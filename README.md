@@ -52,11 +52,11 @@ See https://archive.is/hSB6d#10%25 for a conversation.  There have been quite a 
 
 however almost *every distro* includes the gssapi patch, and it has a "generally good security history"
 https://sources.debian.net/patches/openssh/1:7.5p1-5/
-so I'm OK with it, and created this tap to allow people to still access it, though upstream disdains it.
+so I'm OK with it, and created this tap to allow people to still access it, though upstream disdains it apparently.
 
 Based loosely on the following:
 
-https://github.com/macports/macports-ports/blob/master/net/openssh/Portfile
+https://github.com/macports/macports-ports/blob/master/net/openssh/Portfile `sudo port install openssh +gsskex`
 https://sources.debian.net/patches/openssh/1:7.5p1-5/
 https://archive.is/hSB6d#10%25
 https://github.com/seththeriault/homebrew-openssh-gssapi
