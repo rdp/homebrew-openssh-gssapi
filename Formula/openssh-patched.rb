@@ -31,7 +31,7 @@ class OpensshPatched < Formula
   if build.with? "hpn"
     patch do
       url 'https://sourceforge.net/projects/hpnssh/files/Patches/HPN-SSH%2015v1%208.4p1/openssh-8_4_P1-hpn-KitchenSink-15.1.diff'
-      sha256 "addec311972075ea38f3978b7b98c893152937110a91bf8f00a95c369428c44b"
+      sha256 "a0a1cfd69efc007cfbea2292a136eef8724ceabd8c4303fa268472911304855c"
     end
   end
 
