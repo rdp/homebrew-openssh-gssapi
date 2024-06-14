@@ -55,7 +55,7 @@ class OpensshPatched < Formula
 
   # no idea what this is for...
   resource "com.openssh.sshd.sb" do
-    url "https://opensource.apple.com/source/OpenSSH/OpenSSH-209.50.1/com.openssh.sshd.sb"
+    url "https://raw.githubusercontent.com/apple-opensource/OpenSSH/master/com.openssh.sshd.sb"
     sha256 "a273f86360ea5da3910cfa4c118be931d10904267605cdd4b2055ced3a829774"
   end
 
